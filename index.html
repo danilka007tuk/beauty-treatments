@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Хочу ресницы</title>
-    <meta name="description" content="Салон красоты &#34;Хочу ресницы&#34; предлагает широкий спектр услуг по уходу за волосами, ногтями и телом.">
+    <meta name="description" content="Салон красоты Хочу ресницы предлагает широкий спектр услуг по уходу за собой, включая маникюр, педикюр, окрашивание волос и многое другое.">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <style>
         :root {
@@ -19,10 +19,8 @@
         body {
             font-family: 'Segoe UI', Arial, sans-serif;
             margin: 0; padding: 0;
-            background: var(--bg);
-            color: var(--text);
-            line-height: 1.6;
-            overflow-x: hidden;
+            background: var(--bg); color: var(--text);
+            line-height: 1.6; overflow-x: hidden;
         }
 
         /* КНОПКА-БУРГЕР */
@@ -74,7 +72,7 @@
         }
         
         .hero {
-            background-image: linear-gradient(135deg, rgba(0,0,0,0.6), rgba(0,0,0,0.4)), url('https://image.pollinations.ai/prompt/A%20modern%20beauty%20salon%20interior%20with%20elegant%20decor%2C%20featuring%20beauty%20treatments%20and%20a%20welcoming%20atmosphere%2C%20bright%20lighting%2C%20and%20cozy%20seating.?width=1920&amp;height=1080&amp;nologo=true');
+            background-image: linear-gradient(135deg, rgba(0,0,0,0.6), rgba(0,0,0,0.4)), url('https://image.pollinations.ai/prompt/A%20cozy%20and%20stylish%20beauty%20salon%20interior%20with%20comfortable%20chairs%2C%20stylish%20decor%2C%20and%20bright%20lighting%2C%20showcasing%20beauty%20treatments%20and%20happy%20clients.?width=1920&amp;height=1080&amp;nologo=true');
             background-size: cover; background-position: center;
         }
         
@@ -137,6 +135,47 @@
         .faq-item p { margin: 0; color: #555; line-height: 1.6; font-size: 0.95em; }
 
         .booking { background: #fff; border-radius: 16px; padding: 32px 24px; box-shadow: 0 8px 32px rgba(0,0,0,0.08); }
+
+        /* ============ ВЫБОР МАСТЕРА ============ */
+        .master-selection {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 16px;
+            margin-bottom: 24px;
+        }
+        .master-card {
+            background: var(--bg);
+            border: 2px solid var(--text);
+            border-radius: 12px;
+            padding: 20px;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+        .master-card:hover {
+            border-color: var(--primary);
+            transform: translateY(-2px);
+        }
+        .master-card.selected {
+            border-color: var(--primary);
+            background: var(--primary);
+            color: #fff;
+        }
+        .master-card .master-avatar {
+            width: 60px; height: 60px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            margin: 0 auto 12px;
+            display: flex; align-items: center; justify-content: center;
+            color: #fff; font-size: 1.5em; font-weight: 700;
+        }
+        .master-card.selected .master-avatar {
+            background: #fff;
+            color: var(--primary);
+        }
+        .master-card h3 { margin: 0 0 4px; font-size: 1em; }
+        .master-card .role { font-size: 0.8em; opacity: 0.8; }
+
         .calendar-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; }
         .calendar-header button { background: var(--primary); border: none; width: 40px; height: 40px; border-radius: 10px; font-size: 1.2em; cursor: pointer; color: #fff; }
         .month-year { font-size: 1.15em; font-weight: 700; }
@@ -151,23 +190,10 @@
         .day.selected { background: var(--primary); color: #fff; border-color: var(--accent); }
         .day.today { font-weight: 700; border-color: var(--primary); }
 
-        /* ============ СЛОТЫ ВРЕМЕНИ ============ */
-        .time-slots-wrapper {
-            display: none;
-            margin: 20px 0;
-            text-align: center;
-        }
-        .time-slots-wrapper h3 {
-            font-size: 1.1em;
-            color: var(--primary);
-            margin-bottom: 12px;
-        }
-        .time-slots {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 8px;
-            justify-content: center;
-        }
+        /* СЛОТЫ ВРЕМЕНИ */
+        .time-slots-wrapper { display: none; margin: 20px 0; text-align: center; }
+        .time-slots-wrapper h3 { font-size: 1.1em; color: var(--primary); margin-bottom: 12px; }
+        .time-slots { display: flex; flex-wrap: wrap; gap: 8px; justify-content: center; }
         .time-slot {
             padding: 10px 16px;
             border: 2px solid var(--primary);
@@ -178,14 +204,8 @@
             color: var(--text);
             transition: all 0.2s;
         }
-        .time-slot:hover {
-            background: var(--primary);
-            color: #fff;
-        }
-        .time-slot.selected {
-            background: var(--primary);
-            color: #fff;
-        }
+        .time-slot:hover:not(.busy) { background: var(--primary); color: #fff; }
+        .time-slot.selected { background: var(--primary); color: #fff; }
         .time-slot.busy {
             background: #ffe5e5;
             color: #c0392b;
@@ -256,19 +276,15 @@
         </a>
         
         <a href="javascript:void(0)" onclick="openModal('team')">
-            👩‍🎤 Команда
+            👥 Команда
         </a>
         
         <a href="javascript:void(0)" onclick="openModal('testimonials')">
             ⭐ Отзывы
         </a>
         
-        <a href="javascript:void(0)" onclick="openModal('faq')">
-            ❓ Частые вопросы
-        </a>
-        
         <a href="javascript:void(0)" onclick="openModal('contacts')">
-            📞 Контакты
+            📍 Контакты
         </a>
         
     </nav>
@@ -287,9 +303,9 @@
 <main class="main-content">
 <section class="hero" id="section-hero">
     <div class="hero-inner">
-        <h1>Красота начинается здесь</h1>
-        <p>Идеальные ресницы и не только</p>
-        <div class="hero-about">Салон красоты &#34;Хочу ресницы&#34; предлагает широкий спектр услуг для вашего комфорта и красоты.</div>
+        <h1>Добро пожаловать в Хочу ресницы</h1>
+        <p>Ваш идеальный салон красоты</p>
+        <div class="hero-about">Салон красоты Хочу ресницы предлагает широкий спектр услуг для вашего ухода.</div>
         <div class="hero-contacts">
             <div>📞 666-666</div>
             <div>📍 Белорецк, ул. Канатная 49</div>
@@ -307,14 +323,14 @@
 </section>
 </main>
 
-<footer>Салон красоты &#34;Хочу ресницы&#34;. Ваше удовольствие — наша работа.</footer>
+<footer>Салон красоты Хочу ресницы © 2023</footer>
 
 <!-- МОДАЛКИ -->
 
 <div class="modal" id="modal-features" onclick="modalOutsideClick(event, 'features')">
     <div class="modal-box" onclick="event.stopPropagation()">
         <div class="modal-header"><h2>Преимущества</h2><button class="modal-close" onclick="closeModal('features')">×</button></div>
-        <div class="features-grid"><div class="feature"><h3>Профессиональные мастера</h3><p>Наши специалисты имеют большой опыт и регулярно проходят обучение.</p></div><div class="feature"><h3>Индивидуальный подход</h3><p>Мы учитываем пожелания каждого клиента и создаем уникальные образы.</p></div><div class="feature"><h3>Широкий спектр услуг</h3><p>От стрижек до спа-процедур, мы предоставляем все для вашего ухода.</p></div></div>
+        <div class="features-grid"><div class="feature"><h3>Профессиональные мастера</h3><p>Наши специалисты имеют большой опыт и помогут вам выбрать идеальную услугу.</p></div><div class="feature"><h3>Комфортная обстановка</h3><p>Мы создали уютную атмосферу для вашего максимального расслабления.</p></div><div class="feature"><h3>Широкий спектр услуг</h3><p>Мы предлагаем полный спектр услуг по уходу за собой.</p></div></div>
     </div>
 </div>
 
@@ -323,7 +339,7 @@
 <div class="modal" id="modal-about" onclick="modalOutsideClick(event, 'about')">
     <div class="modal-box" onclick="event.stopPropagation()">
         <div class="modal-header"><h2>О нас</h2><button class="modal-close" onclick="closeModal('about')">×</button></div>
-        <div class="about"><p>В нашем салоне мы заботимся о каждом клиенте, предлагая индивидуальный подход к каждому. Мы предоставляем услуги, связанные с уходом за волосами, ногтями и телом, включая стрижки, окрашивание, маникюр, педикюр и уходовые процедуры. Наша команда профессионалов всегда готова помочь вам стать еще красивее.</p></div>
+        <div class="about"><p>Салон красоты Хочу ресницы в Белорецке — это место, где вы можете расслабиться и насладиться качественными услугами по уходу. Мы предлагаем разнообразные процедуры, от маникюра и педикюра до окрашивания волос и массажей, чтобы подчеркнуть вашу индивидуальность и красоту.</p></div>
     </div>
 </div>
 
@@ -332,7 +348,7 @@
 <div class="modal" id="modal-services" onclick="modalOutsideClick(event, 'services')">
     <div class="modal-box" onclick="event.stopPropagation()">
         <div class="modal-header"><h2>Наши услуги</h2><button class="modal-close" onclick="closeModal('services')">×</button></div>
-        <div class="services-grid"><div class="service-card"><h3>Стрижка и укладка</h3><p>Современные стрижки и укладки для любого типа волос.</p><div class="price">от 1500 руб.</div></div><div class="service-card"><h3>Маникюр и педикюр</h3><p>Качественный уход за ногтями, разнообразные дизайны и уходовые процедуры.</p><div class="price">от 800 руб.</div></div><div class="service-card"><h3>Окрашивание волос</h3><p>Профессиональное окрашивание с использованием качественных красок.</p><div class="price">от 2500 руб.</div></div><div class="service-card"><h3>Брови и ресницы</h3><p>Коррекция и окрашивание бровей, наращивание ресниц.</p><div class="price">от 1000 руб.</div></div></div>
+        <div class="services-grid"><div class="service-card"><h3>Стрижка и укладка</h3><p>Современные стрижки и укладки для любого стиля.</p><div class="price">от 1500 руб.</div></div><div class="service-card"><h3>Маникюр и педикюр</h3><p>Качественные услуги маникюра и педикюра.</p><div class="price">от 800 руб.</div></div><div class="service-card"><h3>Окрашивание волос</h3><p>Профессиональное окрашивание с использованием качественных красителей.</p><div class="price">от 2000 руб.</div></div><div class="service-card"><h3>Уходовые процедуры и SPA</h3><p>Релаксирующие уходовые процедуры для лица и тела.</p><div class="price">от 1200 руб.</div></div></div>
     </div>
 </div>
 
@@ -345,7 +361,7 @@
 <div class="modal" id="modal-testimonials" onclick="modalOutsideClick(event, 'testimonials')">
     <div class="modal-box" onclick="event.stopPropagation()">
         <div class="modal-header"><h2>Отзывы</h2><button class="modal-close" onclick="closeModal('testimonials')">×</button></div>
-        <div class="testimonials-grid"><div class="testimonial"><div class="stars">★★★★★</div><div class="text">«Прекрасный салон! Мастера профессионалы, всегда ухожу довольной.»</div><div class="author">— Анна К.</div></div><div class="testimonial"><div class="stars">★★★★★</div><div class="text">«Отличные услуги и вежливый персонал. Рекомендую!»</div><div class="author">— Мария Л.</div></div><div class="testimonial"><div class="stars">★★★★★</div><div class="text">«Салон стал моим любимым местом для ухода за собой.»</div><div class="author">— Светлана М.</div></div></div>
+        <div class="testimonials-grid"><div class="testimonial"><div class="stars">★★★★★</div><div class="text">«Отличный салон, всегда ухожу довольной! Мастера настоящие профессионалы.»</div><div class="author">— Анна П.</div></div><div class="testimonial"><div class="stars">★★★★★</div><div class="text">«Уютная атмосфера и качественные услуги. Рекомендую!»</div><div class="author">— Екатерина С.</div></div><div class="testimonial"><div class="stars">★★★★★</div><div class="text">«Очень понравилось окрашивание волос. Мастера знают свое дело.»</div><div class="author">— Игорь Т.</div></div></div>
     </div>
 </div>
 
@@ -354,18 +370,11 @@
 <div class="modal" id="modal-team" onclick="modalOutsideClick(event, 'team')">
     <div class="modal-box" onclick="event.stopPropagation()">
         <div class="modal-header"><h2>Наша команда</h2><button class="modal-close" onclick="closeModal('team')">×</button></div>
-        <div class="team-grid"><div class="team-member"><div class="avatar">Е</div><h3>Елена С.</h3><div class="role">Парикмахер</div><p>Специалист по стрижкам и укладкам с 10-летним опытом.</p></div><div class="team-member"><div class="avatar">М</div><h3>Марина Т.</h3><div class="role">Маникюрша</div><p>Профессионал в области маникюра и педикюра, делает идеальные ногти.</p></div><div class="team-member"><div class="avatar">С</div><h3>Светлана Р.</h3><div class="role">Косметолог</div><p>Эксперт в области ухода за кожей и бровями, предлагает индивидуальные процедуры.</p></div></div>
+        <div class="team-grid"><div class="team-member"><div class="avatar">М</div><h3>Мария Иванова</h3><div class="role">Парикмахер</div><p>Специалист по стрижкам и укладкам с 5-летним опытом.</p></div><div class="team-member"><div class="avatar">О</div><h3>Ольга Петрова</h3><div class="role">Мастер маникюра</div><p>Профессионал в маникюре и педикюре, всегда в курсе последних трендов.</p></div><div class="team-member"><div class="avatar">С</div><h3>Светлана Кузнецова</h3><div class="role">Косметолог</div><p>Оказывает услуги по уходу за кожей лица и тела, опыт 7 лет.</p></div></div>
     </div>
 </div>
 
 
-
-<div class="modal" id="modal-faq" onclick="modalOutsideClick(event, 'faq')">
-    <div class="modal-box" onclick="event.stopPropagation()">
-        <div class="modal-header"><h2>Частые вопросы</h2><button class="modal-close" onclick="closeModal('faq')">×</button></div>
-        <div class="faq-list"><div class="faq-item"><h3>Как записаться на услуги?</h3><p>Вы можете записаться по телефону или через наш сайт.</p></div><div class="faq-item"><h3>Какой у вас режим работы?</h3><p>Мы работаем с 10:00 до 20:00 ежедневно.</p></div><div class="faq-item"><h3>Вы предоставляете скидки?</h3><p>Да, у нас есть акции и специальные предложения для постоянных клиентов.</p></div></div>
-    </div>
-</div>
 
 
 <div class="modal" id="modal-contacts" onclick="modalOutsideClick(event, 'contacts')">
@@ -384,23 +393,34 @@
     <div class="modal-box" onclick="event.stopPropagation()">
         <div class="modal-header"><h2>Забронировать</h2><button class="modal-close" onclick="closeModal('booking')">×</button></div>
         <div class="booking">
-            <div class="calendar-header">
-                <button id="prevMonth" type="button">‹</button>
-                <div class="month-year" id="monthYear">—</div>
-                <button id="nextMonth" type="button">›</button>
-            </div>
-            <div class="weekdays"><div>Пн</div><div>Вт</div><div>Ср</div><div>Чт</div><div>Пт</div><div>Сб</div><div>Вс</div></div>
-            <div class="days" id="days"></div>
 
-            <!-- СЛОТЫ ВРЕМЕНИ -->
+            <!-- ШАГ 1: ВЫБОР МАСТЕРА -->
+            <div id="stepMaster">
+                <h3 style="text-align:center; margin-bottom:16px;">Выберите мастера</h3>
+                <div class="master-selection" id="masterSelection"></div>
+            </div>
+
+            <!-- ШАГ 2: КАЛЕНДАРЬ (скрыт, пока не выбран мастер) -->
+            <div id="stepCalendar" style="display:none;">
+                <div class="calendar-header">
+                    <button id="prevMonth" type="button">‹</button>
+                    <div class="month-year" id="monthYear">—</div>
+                    <button id="nextMonth" type="button">›</button>
+                </div>
+                <div class="weekdays"><div>Пн</div><div>Вт</div><div>Ср</div><div>Чт</div><div>Пт</div><div>Сб</div><div>Вс</div></div>
+                <div class="days" id="days"></div>
+            </div>
+
+            <!-- ШАГ 3: СЛОТЫ ВРЕМЕНИ (скрыты) -->
             <div class="time-slots-wrapper" id="timeSlotsWrapper">
                 <h3>Выберите время</h3>
                 <div class="time-slots" id="timeSlots"></div>
             </div>
 
+            <!-- ШАГ 4: ФОРМА (скрыта) -->
             <form class="booking-form" id="bookingForm">
                 <h3>Вы выбрали: <span id="selectedDate"></span> в <span id="selectedTimeText"></span></h3>
-                <div class="form-group"><label for="service">Услуга</label><select id="service" required><option value="">— Выберите услугу —</option><option value="Стрижка и укладка">Стрижка и укладка</option><option value="Маникюр и педикюр">Маникюр и педикюр</option><option value="Окрашивание волос">Окрашивание волос</option><option value="Брови и ресницы">Брови и ресницы</option></select></div>
+                <div class="form-group"><label for="service">Услуга</label><select id="service" required><option value="">— Выберите услугу —</option></select></div>
                 <div class="form-group"><label for="name">Ваше имя</label><input type="text" id="name" placeholder="Иван Иванов" required></div>
                 <div class="form-group"><label for="phone">Телефон</label><input type="tel" id="phone" placeholder="+7 (___) ___-__-__" required></div>
                 <div class="form-group"><label for="email">Email (для подтверждения)</label><input type="email" id="email" placeholder="mail@example.com"></div>
@@ -414,7 +434,7 @@
 <div class="success-modal" id="successModal">
     <div class="modal-content">
         <h3>✅ Заявка отправлена!</h3>
-        <p>Спасибо за вашу заявку! Мы свяжемся с вами.</p>
+        <p>Спасибо за вашу заявку! Мы свяжемся с вами в ближайшее время.</p>
         <button onclick="closeSuccessModal()">Хорошо</button>
     </div>
 </div>
@@ -423,11 +443,14 @@
     const SERVER_URL = 'https://cornell-wireless-constitute-hostels.trycloudflare.com';
     const SITE_ID = 'beauty-treatments';
     const WORKING_HOURS = '10:00-20:00';
+    const TEAM = [{"description": "\u0421\u043f\u0435\u0446\u0438\u0430\u043b\u0438\u0441\u0442 \u043f\u043e \u0441\u0442\u0440\u0438\u0436\u043a\u0430\u043c \u0438 \u0443\u043a\u043b\u0430\u0434\u043a\u0430\u043c \u0441 5-\u043b\u0435\u0442\u043d\u0438\u043c \u043e\u043f\u044b\u0442\u043e\u043c.", "name": "\u041c\u0430\u0440\u0438\u044f \u0418\u0432\u0430\u043d\u043e\u0432\u0430", "role": "\u041f\u0430\u0440\u0438\u043a\u043c\u0430\u0445\u0435\u0440", "services": ["\u0421\u0442\u0440\u0438\u0436\u043a\u0430", "\u0423\u043a\u043b\u0430\u0434\u043a\u0430"]}, {"description": "\u041f\u0440\u043e\u0444\u0435\u0441\u0441\u0438\u043e\u043d\u0430\u043b \u0432 \u043c\u0430\u043d\u0438\u043a\u044e\u0440\u0435 \u0438 \u043f\u0435\u0434\u0438\u043a\u044e\u0440\u0435, \u0432\u0441\u0435\u0433\u0434\u0430 \u0432 \u043a\u0443\u0440\u0441\u0435 \u043f\u043e\u0441\u043b\u0435\u0434\u043d\u0438\u0445 \u0442\u0440\u0435\u043d\u0434\u043e\u0432.", "name": "\u041e\u043b\u044c\u0433\u0430 \u041f\u0435\u0442\u0440\u043e\u0432\u0430", "role": "\u041c\u0430\u0441\u0442\u0435\u0440 \u043c\u0430\u043d\u0438\u043a\u044e\u0440\u0430", "services": ["\u041c\u0430\u043d\u0438\u043a\u044e\u0440", "\u041f\u0435\u0434\u0438\u043a\u044e\u0440"]}, {"description": "\u041e\u043a\u0430\u0437\u044b\u0432\u0430\u0435\u0442 \u0443\u0441\u043b\u0443\u0433\u0438 \u043f\u043e \u0443\u0445\u043e\u0434\u0443 \u0437\u0430 \u043a\u043e\u0436\u0435\u0439 \u043b\u0438\u0446\u0430 \u0438 \u0442\u0435\u043b\u0430, \u043e\u043f\u044b\u0442 7 \u043b\u0435\u0442.", "name": "\u0421\u0432\u0435\u0442\u043b\u0430\u043d\u0430 \u041a\u0443\u0437\u043d\u0435\u0446\u043e\u0432\u0430", "role": "\u041a\u043e\u0441\u043c\u0435\u0442\u043e\u043b\u043e\u0433", "services": ["\u0423\u0445\u043e\u0434\u043e\u0432\u044b\u0435 \u043f\u0440\u043e\u0446\u0435\u0434\u0443\u0440\u044b", "\u041c\u0430\u0441\u0441\u0430\u0436"]}];
+    const ALL_SERVICES = [{"description": "\u0421\u043e\u0432\u0440\u0435\u043c\u0435\u043d\u043d\u044b\u0435 \u0441\u0442\u0440\u0438\u0436\u043a\u0438 \u0438 \u0443\u043a\u043b\u0430\u0434\u043a\u0438 \u0434\u043b\u044f \u043b\u044e\u0431\u043e\u0433\u043e \u0441\u0442\u0438\u043b\u044f.", "name": "\u0421\u0442\u0440\u0438\u0436\u043a\u0430 \u0438 \u0443\u043a\u043b\u0430\u0434\u043a\u0430", "price": "\u043e\u0442 1500 \u0440\u0443\u0431."}, {"description": "\u041a\u0430\u0447\u0435\u0441\u0442\u0432\u0435\u043d\u043d\u044b\u0435 \u0443\u0441\u043b\u0443\u0433\u0438 \u043c\u0430\u043d\u0438\u043a\u044e\u0440\u0430 \u0438 \u043f\u0435\u0434\u0438\u043a\u044e\u0440\u0430.", "name": "\u041c\u0430\u043d\u0438\u043a\u044e\u0440 \u0438 \u043f\u0435\u0434\u0438\u043a\u044e\u0440", "price": "\u043e\u0442 800 \u0440\u0443\u0431."}, {"description": "\u041f\u0440\u043e\u0444\u0435\u0441\u0441\u0438\u043e\u043d\u0430\u043b\u044c\u043d\u043e\u0435 \u043e\u043a\u0440\u0430\u0448\u0438\u0432\u0430\u043d\u0438\u0435 \u0441 \u0438\u0441\u043f\u043e\u043b\u044c\u0437\u043e\u0432\u0430\u043d\u0438\u0435\u043c \u043a\u0430\u0447\u0435\u0441\u0442\u0432\u0435\u043d\u043d\u044b\u0445 \u043a\u0440\u0430\u0441\u0438\u0442\u0435\u043b\u0435\u0439.", "name": "\u041e\u043a\u0440\u0430\u0448\u0438\u0432\u0430\u043d\u0438\u0435 \u0432\u043e\u043b\u043e\u0441", "price": "\u043e\u0442 2000 \u0440\u0443\u0431."}, {"description": "\u0420\u0435\u043b\u0430\u043a\u0441\u0438\u0440\u0443\u044e\u0449\u0438\u0435 \u0443\u0445\u043e\u0434\u043e\u0432\u044b\u0435 \u043f\u0440\u043e\u0446\u0435\u0434\u0443\u0440\u044b \u0434\u043b\u044f \u043b\u0438\u0446\u0430 \u0438 \u0442\u0435\u043b\u0430.", "name": "\u0423\u0445\u043e\u0434\u043e\u0432\u044b\u0435 \u043f\u0440\u043e\u0446\u0435\u0434\u0443\u0440\u044b \u0438 SPA", "price": "\u043e\u0442 1200 \u0440\u0443\u0431."}];
 
     let currentMonth = new Date();
+    let selectedMaster = null;
     let selectedDate = null;
     let selectedTime = null;
-    let busyDates = [];
+    let busySlots = [];  // {date, time, master, service}
 
     const monthYearEl = document.getElementById('monthYear');
     const daysEl = document.getElementById('days');
@@ -437,6 +460,10 @@
     const successModal = document.getElementById('successModal');
     const timeSlotsWrapper = document.getElementById('timeSlotsWrapper');
     const timeSlotsEl = document.getElementById('timeSlots');
+    const masterSelectionEl = document.getElementById('masterSelection');
+    const stepMaster = document.getElementById('stepMaster');
+    const stepCalendar = document.getElementById('stepCalendar');
+    const serviceSelect = document.getElementById('service');
 
     function toggleSidebar() {
         const sidebar = document.getElementById('sidebar');
@@ -457,7 +484,10 @@
         modal.classList.add('open');
         document.body.style.overflow = 'hidden';
         closeSidebar();
-        if (name === 'booking') renderCalendar();
+        if (name === 'booking') {
+            resetBooking();
+            renderMasters();
+        }
     }
     function closeModal(name) {
         const modal = document.getElementById('modal-' + name);
@@ -476,6 +506,70 @@
         }
     });
 
+    // ============ ШАГ 1: МАСТЕРА ============
+    function renderMasters() {
+        masterSelectionEl.innerHTML = '';
+        if (!TEAM || TEAM.length === 0) {
+            masterSelectionEl.innerHTML = '<p style="text-align:center; grid-column:1/-1;">Мастера не указаны.</p>';
+            return;
+        }
+        TEAM.forEach(master => {
+            const card = document.createElement('div');
+            card.className = 'master-card';
+            card.innerHTML = `
+                <div class="master-avatar">${master.name ? master.name[0] : '?'}</div>
+                <h3>${master.name}</h3>
+                <div class="role">${master.role || ''}</div>
+            `;
+            card.onclick = () => selectMaster(master, card);
+            masterSelectionEl.appendChild(card);
+        });
+    }
+
+    function selectMaster(master, card) {
+        document.querySelectorAll('.master-card').forEach(c => c.classList.remove('selected'));
+        card.classList.add('selected');
+        selectedMaster = master;
+
+        // Заполняем услуги этого мастера
+        serviceSelect.innerHTML = '<option value="">— Выберите услугу —</option>';
+        const services = master.services && master.services.length > 0 ? master.services : [];
+        services.forEach(s => {
+            const opt = document.createElement('option');
+            opt.value = s;
+            opt.textContent = s;
+            serviceSelect.appendChild(opt);
+        });
+
+        // Показываем календарь
+        stepMaster.style.display = 'none';
+        stepCalendar.style.display = 'block';
+        timeSlotsWrapper.style.display = 'none';
+        formEl.classList.remove('active');
+
+        // Загружаем занятые слоты
+        loadBusySlots();
+        renderCalendar();
+    }
+
+    // ============ ЗАНЯТЫЕ СЛОТЫ ============
+    async function loadBusySlots() {
+        try {
+            const res = await fetch(`${SERVER_URL}/api/busy/${SITE_ID}`);
+            const data = await res.json();
+            busySlots = data.busy || [];
+        } catch (e) {
+            console.error('Не удалось загрузить занятые слоты', e);
+            busySlots = [];
+        }
+    }
+
+    function isSlotBusy(date, time) {
+        if (!selectedMaster) return false;
+        return busySlots.some(b => b.date === date && b.time === time && b.master === selectedMaster.name);
+    }
+
+    // ============ ШАГ 2: КАЛЕНДАРЬ ============
     function renderCalendar() {
         if (!daysEl) return;
         const year = currentMonth.getFullYear();
@@ -500,7 +594,6 @@
             dayEl.className = 'day';
             dayEl.textContent = d;
             if (dateObj < today) dayEl.classList.add('disabled');
-            else if (busyDates.includes(iso)) dayEl.classList.add('busy');
             else {
                 if (iso === formatISO(today)) dayEl.classList.add('today');
                 if (iso === selectedDate) dayEl.classList.add('selected');
@@ -523,14 +616,13 @@
         const formatted = dateObj.toLocaleDateString('ru-RU', { day:'numeric', month:'long', year:'numeric' });
         if (selectedDateEl) selectedDateEl.textContent = formatted;
         if (selectedTimeText) selectedTimeText.textContent = '—';
-        if (formEl) formEl.classList.remove('active');
+        formEl.classList.remove('active');
         renderCalendar();
         generateTimeSlots();
     }
 
+    // ============ ШАГ 3: СЛОТЫ ВРЕМЕНИ ============
     function generateTimeSlots() {
-        if (!timeSlotsWrapper || !timeSlotsEl) return;
-
         let start = 9, end = 20;
         const match = WORKING_HOURS.match(/(\d{1,2}):\d{2}\s*-\s*(\d{1,2}):\d{2}/);
         if (match) {
@@ -546,7 +638,13 @@
             const slot = document.createElement('div');
             slot.className = 'time-slot';
             slot.textContent = timeStr;
-            slot.onclick = () => selectTime(slot, timeStr);
+
+            if (isSlotBusy(selectedDate, timeStr)) {
+                slot.classList.add('busy');
+            } else {
+                slot.onclick = () => selectTime(slot, timeStr);
+            }
+
             timeSlotsEl.appendChild(slot);
         }
     }
@@ -556,8 +654,22 @@
         slot.classList.add('selected');
         selectedTime = timeStr;
         if (selectedTimeText) selectedTimeText.textContent = timeStr;
-        if (formEl) formEl.classList.add('active');
-        if (formEl) formEl.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+        formEl.classList.add('active');
+        formEl.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+    }
+
+    // ============ СБРОС ============
+    function resetBooking() {
+        selectedMaster = null;
+        selectedDate = null;
+        selectedTime = null;
+        stepMaster.style.display = 'block';
+        stepCalendar.style.display = 'none';
+        timeSlotsWrapper.style.display = 'none';
+        formEl.classList.remove('active');
+        serviceSelect.innerHTML = '<option value="">— Выберите услугу —</option>';
+        if (selectedDateEl) selectedDateEl.textContent = '—';
+        if (selectedTimeText) selectedTimeText.textContent = '—';
     }
 
     const prevBtn = document.getElementById('prevMonth');
@@ -568,14 +680,14 @@
     if (formEl) {
         formEl.addEventListener('submit', async (e) => {
             e.preventDefault();
-            const service = document.getElementById('service').value;
+            const service = serviceSelect.value;
             const name = document.getElementById('name').value.trim();
             const phone = document.getElementById('phone').value.trim();
             const email = document.getElementById('email').value.trim();
             const comment = document.getElementById('comment').value.trim();
 
-            if (!selectedDate || !selectedTime || !service || !name || !phone) {
-                alert('Выберите дату, время и заполните все поля');
+            if (!selectedMaster || !selectedDate || !selectedTime || !service || !name || !phone) {
+                alert('Выберите мастера, дату, время, услугу и заполните поля');
                 return;
             }
 
@@ -587,11 +699,19 @@
                 const response = await fetch(`${SERVER_URL}/api/book/${SITE_ID}`, {
                     method: 'POST',
                     headers: {'Content-Type': 'application/json'},
-                    body: JSON.stringify({ date: selectedDate, time: selectedTime, service, name, phone, email, comment }),
+                    body: JSON.stringify({
+                        master: selectedMaster.name,
+                        date: selectedDate,
+                        time: selectedTime,
+                        service,
+                        name,
+                        phone,
+                        email,
+                        comment
+                    }),
                 });
                 const result = await response.json();
                 if (!response.ok || !result.ok) throw new Error(result.error || 'Ошибка сервера');
-                busyDates.push(selectedDate);
                 closeModal('booking');
                 successModal.classList.add('active');
             } catch (error) {
@@ -606,10 +726,8 @@
 
     function closeSuccessModal() {
         successModal.classList.remove('active');
-        if (formEl) { formEl.reset(); formEl.classList.remove('active'); }
-        selectedDate = null;
-        selectedTime = null;
-        if (timeSlotsWrapper) timeSlotsWrapper.style.display = 'none';
+        formEl.reset();
+        resetBooking();
         renderCalendar();
     }
 
