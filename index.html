@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Хочу ресницы</title>
-    <meta name="description" content="Салон красоты Хочу ресницы предлагает широкий спектр услуг по уходу за волосами и ногтями.">
+    <meta name="description" content="Салон красоты &#34;Хочу ресницы&#34; предлагает широкий спектр услуг по уходу за волосами, ногтями и телом.">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <style>
         :root {
@@ -74,7 +74,7 @@
         }
         
         .hero {
-            background-image: linear-gradient(135deg, rgba(0,0,0,0.6), rgba(0,0,0,0.4)), url('https://image.pollinations.ai/prompt/Elegant%20beauty%20salon%20interior%20with%20soothing%20lighting%2C%20comfortable%20chairs%2C%20beauty%20products%2C%20and%20a%20welcoming%20atmosphere.?width=1920&amp;height=1080&amp;nologo=true');
+            background-image: linear-gradient(135deg, rgba(0,0,0,0.6), rgba(0,0,0,0.4)), url('https://image.pollinations.ai/prompt/A%20modern%20beauty%20salon%20interior%20with%20elegant%20decor%2C%20featuring%20beauty%20treatments%20and%20a%20welcoming%20atmosphere%2C%20bright%20lighting%2C%20and%20cozy%20seating.?width=1920&amp;height=1080&amp;nologo=true');
             background-size: cover; background-position: center;
         }
         
@@ -255,16 +255,20 @@
             💼 Услуги
         </a>
         
+        <a href="javascript:void(0)" onclick="openModal('team')">
+            👩‍🎤 Команда
+        </a>
+        
+        <a href="javascript:void(0)" onclick="openModal('testimonials')">
+            ⭐ Отзывы
+        </a>
+        
+        <a href="javascript:void(0)" onclick="openModal('faq')">
+            ❓ Частые вопросы
+        </a>
+        
         <a href="javascript:void(0)" onclick="openModal('contacts')">
             📞 Контакты
-        </a>
-        
-        <a href="javascript:void(0)" onclick="openModal('booking')">
-            📅 Записаться
-        </a>
-        
-        <a href="javascript:void(0)" onclick="openModal('about')">
-            ℹ️ О нас
         </a>
         
     </nav>
@@ -283,9 +287,9 @@
 <main class="main-content">
 <section class="hero" id="section-hero">
     <div class="hero-inner">
-        <h1>Преобразите свой образ!</h1>
-        <p>Услуги по уходу за красотой в Хочу ресницы.</p>
-        <div class="hero-about">Салон красоты Хочу ресницы предлагает разнообразные услуги по уходу за волосами и ногтями.</div>
+        <h1>Красота начинается здесь</h1>
+        <p>Идеальные ресницы и не только</p>
+        <div class="hero-about">Салон красоты &#34;Хочу ресницы&#34; предлагает широкий спектр услуг для вашего комфорта и красоты.</div>
         <div class="hero-contacts">
             <div>📞 666-666</div>
             <div>📍 Белорецк, ул. Канатная 49</div>
@@ -303,14 +307,14 @@
 </section>
 </main>
 
-<footer>Салон красоты Хочу ресницы © 2023</footer>
+<footer>Салон красоты &#34;Хочу ресницы&#34;. Ваше удовольствие — наша работа.</footer>
 
 <!-- МОДАЛКИ -->
 
 <div class="modal" id="modal-features" onclick="modalOutsideClick(event, 'features')">
     <div class="modal-box" onclick="event.stopPropagation()">
         <div class="modal-header"><h2>Преимущества</h2><button class="modal-close" onclick="closeModal('features')">×</button></div>
-        <div class="features-grid"><div class="feature"><h3>Профессиональные мастера</h3><p>Наши мастера имеют большой опыт и квалификацию.</p></div><div class="feature"><h3>Современные технологии</h3><p>Мы используем только современные методы и техники.</p></div><div class="feature"><h3>Индивидуальный подход</h3><p>Каждый клиент для нас уникален, мы учитываем все ваши пожелания.</p></div></div>
+        <div class="features-grid"><div class="feature"><h3>Профессиональные мастера</h3><p>Наши специалисты имеют большой опыт и регулярно проходят обучение.</p></div><div class="feature"><h3>Индивидуальный подход</h3><p>Мы учитываем пожелания каждого клиента и создаем уникальные образы.</p></div><div class="feature"><h3>Широкий спектр услуг</h3><p>От стрижек до спа-процедур, мы предоставляем все для вашего ухода.</p></div></div>
     </div>
 </div>
 
@@ -319,7 +323,7 @@
 <div class="modal" id="modal-about" onclick="modalOutsideClick(event, 'about')">
     <div class="modal-box" onclick="event.stopPropagation()">
         <div class="modal-header"><h2>О нас</h2><button class="modal-close" onclick="closeModal('about')">×</button></div>
-        <div class="about"><p>Салон красоты Хочу ресницы — это место, где каждый может найти услуги, соответствующие его потребностям. Мы предлагаем широкий спектр услуг, включая стрижку и укладку, маникюр и педикюр, окрашивание волос и уходовые процедуры. Наша команда профессионалов поможет вам выглядеть и чувствовать себя великолепно.</p></div>
+        <div class="about"><p>В нашем салоне мы заботимся о каждом клиенте, предлагая индивидуальный подход к каждому. Мы предоставляем услуги, связанные с уходом за волосами, ногтями и телом, включая стрижки, окрашивание, маникюр, педикюр и уходовые процедуры. Наша команда профессионалов всегда готова помочь вам стать еще красивее.</p></div>
     </div>
 </div>
 
@@ -328,7 +332,7 @@
 <div class="modal" id="modal-services" onclick="modalOutsideClick(event, 'services')">
     <div class="modal-box" onclick="event.stopPropagation()">
         <div class="modal-header"><h2>Наши услуги</h2><button class="modal-close" onclick="closeModal('services')">×</button></div>
-        <div class="services-grid"><div class="service-card"><h3>Стрижка и укладка</h3><p>Стрижки любой сложности и укладки для любого случая.</p><div class="price">от 800 руб.</div></div><div class="service-card"><h3>Маникюр и педикюр</h3><p>Качественные услуги маникюра и педикюра.</p><div class="price">от 600 руб.</div></div><div class="service-card"><h3>Окрашивание волос</h3><p>Современные техники окрашивания для создания идеального образа.</p><div class="price">от 2000 руб.</div></div><div class="service-card"><h3>Брови и ресницы</h3><p>Коррекция, окрашивание бровей и наращивание ресниц.</p><div class="price">от 1000 руб.</div></div><div class="service-card"><h3>Уходовые процедуры и SPA</h3><p>Расслабляющие уходовые процедуры для тела и лица.</p><div class="price">от 1500 руб.</div></div><div class="service-card"><h3>Массаж</h3><p>Разнообразные виды массажа для вашего комфорта.</p><div class="price">от 1200 руб.</div></div></div>
+        <div class="services-grid"><div class="service-card"><h3>Стрижка и укладка</h3><p>Современные стрижки и укладки для любого типа волос.</p><div class="price">от 1500 руб.</div></div><div class="service-card"><h3>Маникюр и педикюр</h3><p>Качественный уход за ногтями, разнообразные дизайны и уходовые процедуры.</p><div class="price">от 800 руб.</div></div><div class="service-card"><h3>Окрашивание волос</h3><p>Профессиональное окрашивание с использованием качественных красок.</p><div class="price">от 2500 руб.</div></div><div class="service-card"><h3>Брови и ресницы</h3><p>Коррекция и окрашивание бровей, наращивание ресниц.</p><div class="price">от 1000 руб.</div></div></div>
     </div>
 </div>
 
@@ -338,9 +342,30 @@
 
 
 
+<div class="modal" id="modal-testimonials" onclick="modalOutsideClick(event, 'testimonials')">
+    <div class="modal-box" onclick="event.stopPropagation()">
+        <div class="modal-header"><h2>Отзывы</h2><button class="modal-close" onclick="closeModal('testimonials')">×</button></div>
+        <div class="testimonials-grid"><div class="testimonial"><div class="stars">★★★★★</div><div class="text">«Прекрасный салон! Мастера профессионалы, всегда ухожу довольной.»</div><div class="author">— Анна К.</div></div><div class="testimonial"><div class="stars">★★★★★</div><div class="text">«Отличные услуги и вежливый персонал. Рекомендую!»</div><div class="author">— Мария Л.</div></div><div class="testimonial"><div class="stars">★★★★★</div><div class="text">«Салон стал моим любимым местом для ухода за собой.»</div><div class="author">— Светлана М.</div></div></div>
+    </div>
+</div>
 
 
 
+<div class="modal" id="modal-team" onclick="modalOutsideClick(event, 'team')">
+    <div class="modal-box" onclick="event.stopPropagation()">
+        <div class="modal-header"><h2>Наша команда</h2><button class="modal-close" onclick="closeModal('team')">×</button></div>
+        <div class="team-grid"><div class="team-member"><div class="avatar">Е</div><h3>Елена С.</h3><div class="role">Парикмахер</div><p>Специалист по стрижкам и укладкам с 10-летним опытом.</p></div><div class="team-member"><div class="avatar">М</div><h3>Марина Т.</h3><div class="role">Маникюрша</div><p>Профессионал в области маникюра и педикюра, делает идеальные ногти.</p></div><div class="team-member"><div class="avatar">С</div><h3>Светлана Р.</h3><div class="role">Косметолог</div><p>Эксперт в области ухода за кожей и бровями, предлагает индивидуальные процедуры.</p></div></div>
+    </div>
+</div>
+
+
+
+<div class="modal" id="modal-faq" onclick="modalOutsideClick(event, 'faq')">
+    <div class="modal-box" onclick="event.stopPropagation()">
+        <div class="modal-header"><h2>Частые вопросы</h2><button class="modal-close" onclick="closeModal('faq')">×</button></div>
+        <div class="faq-list"><div class="faq-item"><h3>Как записаться на услуги?</h3><p>Вы можете записаться по телефону или через наш сайт.</p></div><div class="faq-item"><h3>Какой у вас режим работы?</h3><p>Мы работаем с 10:00 до 20:00 ежедневно.</p></div><div class="faq-item"><h3>Вы предоставляете скидки?</h3><p>Да, у нас есть акции и специальные предложения для постоянных клиентов.</p></div></div>
+    </div>
+</div>
 
 
 <div class="modal" id="modal-contacts" onclick="modalOutsideClick(event, 'contacts')">
@@ -375,7 +400,7 @@
 
             <form class="booking-form" id="bookingForm">
                 <h3>Вы выбрали: <span id="selectedDate"></span> в <span id="selectedTimeText"></span></h3>
-                <div class="form-group"><label for="service">Услуга</label><select id="service" required><option value="">— Выберите услугу —</option><option value="Стрижка и укладка">Стрижка и укладка</option><option value="Маникюр и педикюр">Маникюр и педикюр</option><option value="Окрашивание волос">Окрашивание волос</option><option value="Брови и ресницы">Брови и ресницы</option><option value="Уходовые процедуры и SPA">Уходовые процедуры и SPA</option><option value="Массаж">Массаж</option></select></div>
+                <div class="form-group"><label for="service">Услуга</label><select id="service" required><option value="">— Выберите услугу —</option><option value="Стрижка и укладка">Стрижка и укладка</option><option value="Маникюр и педикюр">Маникюр и педикюр</option><option value="Окрашивание волос">Окрашивание волос</option><option value="Брови и ресницы">Брови и ресницы</option></select></div>
                 <div class="form-group"><label for="name">Ваше имя</label><input type="text" id="name" placeholder="Иван Иванов" required></div>
                 <div class="form-group"><label for="phone">Телефон</label><input type="tel" id="phone" placeholder="+7 (___) ___-__-__" required></div>
                 <div class="form-group"><label for="email">Email (для подтверждения)</label><input type="email" id="email" placeholder="mail@example.com"></div>
@@ -389,7 +414,7 @@
 <div class="success-modal" id="successModal">
     <div class="modal-content">
         <h3>✅ Заявка отправлена!</h3>
-        <p>Спасибо за вашу заявку! Мы свяжемся с вами в ближайшее время.</p>
+        <p>Спасибо за вашу заявку! Мы свяжемся с вами.</p>
         <button onclick="closeSuccessModal()">Хорошо</button>
     </div>
 </div>
